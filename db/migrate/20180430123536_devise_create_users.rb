@@ -20,6 +20,11 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.datetime :last_sign_in_at
       t.inet     :current_sign_in_ip
       t.inet     :last_sign_in_ip
+      
+      ## Custom field on users
+      t.string :name, null: false
+      t.text :bio
+      t.timestamps null: false
 
       ## Confirmable
       # t.string   :confirmation_token
