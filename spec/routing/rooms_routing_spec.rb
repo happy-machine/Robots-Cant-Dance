@@ -1,4 +1,6 @@
 require "rails_helper"
+require 'simplecov'
+SimpleCov.start
 
 RSpec.describe RoomsController, type: :routing do
   describe "routing" do

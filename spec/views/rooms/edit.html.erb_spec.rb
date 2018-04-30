@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "rooms/edit", type: :view do
   before(:each) do
-    @room = assign(:room, Room.create!())
+    @room = assign(:room, Room.create!(name:'yo muma room'))
   end
 
   it "renders the edit room form" do
