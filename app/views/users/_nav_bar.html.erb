@@ -1,0 +1,18 @@
+<header>
+  <div id="header">
+    <h1 class="site-name"><em>Banter Box</em></h1>
+    <nav>
+      <ul class="nav-links">
+        <li><%= link_to "Home", root_path %></li>
+        <% if current_user %>
+           <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+           <li><%= link_to "Profile", edit_user_path(current_user.id) %> </li>
+         <% else %>
+           <li><%= link_to "Sign Up", new_user_registration_path %></li>
+           <li><%= link_to "Login", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+
+</header>
