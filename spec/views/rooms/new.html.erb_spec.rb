@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "rooms/new", type: :view do
   before(:each) do
-    assign(:room, Room.new())
+    assign(:room, Room.new(name:'yo mummas room'))
   end
 
   it "renders new room form" do

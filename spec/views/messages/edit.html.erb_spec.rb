@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "messages/edit", type: :view do
   before(:each) do
-    @message = assign(:message, Message.create!())
+    @message = assign(:message, Message.create!(content:'message content'))
   end
 
   it "renders the edit message form" do

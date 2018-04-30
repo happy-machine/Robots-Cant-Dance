@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "messages/index", type: :view do
   before(:each) do
     assign(:messages, [
-      Message.create!(),
-      Message.create!()
+      Message.create!(content:'message content'),
+      Message.create!(content:'message content')
     ])
   end
 

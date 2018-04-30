@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "messages/new", type: :view do
   before(:each) do
-    assign(:message, Message.new())
+    assign(:message, Message.new(content:'message content'))
   end
 
   it "renders new message form" do
