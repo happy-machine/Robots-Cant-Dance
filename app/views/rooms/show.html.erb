@@ -5,13 +5,16 @@
 </div>
 <div class="message-area">
   <h2>You're in the <%= @room.name %> room</h2>
-  <% @messages.each do |m| %>
-    <%= m.content %>
-  <% end %>
+    <% @messages.each do |m| %>
+      <p><%= m.content %></p>
+    <% end %>
   <h2> Create new message </h2>
   <%= form_for(@message, url: room_messages_path(@room)) do |f| %>
     <%= f.label :content %><br />
     <%= f.text_field :content %><br />
     <%= f.submit "Post message" %>
   <% end %>
+  
+  <meta http-equiv="refresh" content="5" >
+  <!-- refresh page every 5 seconds -->
 </div>
