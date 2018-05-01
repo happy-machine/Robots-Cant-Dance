@@ -1,12 +1,17 @@
 <p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_room_path(@room) %> |
-<%= link_to 'Back', rooms_path %>
-
-<h2> Create new message </h2>
-<%= form_for @message do |f| %>
-  <div class="field">
+<div class="links">
+  <%= link_to 'Edit', edit_room_path(@room) %> |
+  <%= link_to 'Back', rooms_path %>
+</div>
+<div class="message-area">
+  <h2>You're in the <%= @room.name %> room</h2>
+  <% @messages.each do |m| %>
+    <%= m.content %>
+  <% end %>
+  <h2> Create new message </h2>
+  <%= form_for(@message, url: room_messages_path(@room)) do |f| %>
     <%= f.label :content %><br />
-    <%= f.text_field :content, autocomplete: "bio" %>
-  </div>
-<% end %>
+    <%= f.text_field :content %><br />
+    <%= f.submit "Post message" %>
+  <% end %>
+</div>

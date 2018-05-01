@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.home-container{
+  display: grid;
+  grid-template-columns: 25% 75%;
+  grid-row: auto;
+  grid-template-areas:
+  "aside room"
+}
+.side-bar{
+  grid-area: aside;
+  justify-self: start;
+  align-self: center;
+  background-color: #ccc;
+  height: 100vh;
+  width: 100%;
+}
+
+.rooms{
+  grid-area: room;
+  background-color: #333;
+  justify-self: center;
+  align-self: center;
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  grid-row: auto;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-areas:
+  "name link edit destroy";
+  .room-name{
+    grid-area: name;
+    justify-self: start;
+    align-self: center;
+  }
+  .room-link{
+    grid-area: link;
+    justify-self: start;
+    align-self: center;
+  }
+  .room-edit{
+    grid-area: edit;
+    justify-self: start;
+    align-self: center;
+  }
+  .room-delete{
+    grid-area: destroy;
+    justify-self: start;
+    align-self: center;
+    }
+}

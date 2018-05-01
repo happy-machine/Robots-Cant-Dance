@@ -1,25 +1,22 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Rooms</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="home-container">
+  <div class="side-bar">
+    <%= render :partial => "rooms/nav_bar" %>
+  </div>
+  <div class="rooms">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <h1>Rooms</h1>
     <% @rooms.each do |room| %>
-      <tr>
-        <td><%= link_to 'Show', room %></td>
-        <td><%= link_to 'Edit', edit_room_path(room) %></td>
-        <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="room-list">
+        <p class="room-name"><%= room.name %></p>
+        <p class="room-link"><%= link_to 'Show', room %></p>
+        <p class="room-edit"><%= link_to 'Edit', edit_room_path(room) %></p>
+        <p class="room-delete"><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+      </div>
     <% end %>
-  </tbody>
-</table>
 
-<br>
 
-<%= link_to 'New Room', new_room_path %>
+
+    <%= link_to 'New Room', new_room_path %>
+  </div>
+</div>
