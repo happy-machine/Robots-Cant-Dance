@@ -2,3 +2,11 @@
 
 <%= link_to 'Edit', edit_room_path(@room) %> |
 <%= link_to 'Back', rooms_path %>
+
+<h2> Create new message </h2>
+<%= form_for @message do |f| %>
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_field :content, autocomplete: "bio" %>
+  </div>
+<% end %>

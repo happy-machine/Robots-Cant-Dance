@@ -11,6 +11,11 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= form.label :name %><br />
+    <%= form.text_field :name, autocomplete: "name" %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
