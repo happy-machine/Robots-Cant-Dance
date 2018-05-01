@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users
-  resources :rooms
-  resources :messages
-  root to: "users#index" #Devise example root (must root to 'something'):
+
+  resources :rooms do
+    resources :messages, only: [:create]
+  end
+  root to: "rooms#index"
+
 end
