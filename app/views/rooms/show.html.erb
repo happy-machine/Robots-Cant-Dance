@@ -1,20 +1,29 @@
-<p id="notice"><%= notice %></p>
-<div class="links">
-  <%= link_to 'Edit', edit_room_path(@room) %> |
-  <%= link_to 'Back', rooms_path %>
-</div>
-<div class="message-area">
-  <h2>You're in the <%= @room.name %> room</h2>
-    <% @messages.each do |m| %>
-      <p><%= m.content %></p>
-    <% end %>
-  <h2> Create new message </h2>
-  <%= form_for(@message, url: room_messages_path(@room)) do |f| %>
-    <%= f.label :content %><br />
-    <%= f.text_field :content %><br />
-    <%= f.submit "Post message" %>
-  <% end %>
-  
-  <meta http-equiv="refresh" content="5" >
+
+<button onClick="window.location='<%=new_room_path%>';" id="new_room" class="_button _button-5">New Room</button>
+  <div id="form_position"><div class="back_plate2">
+    <div id="room_bar3" class="room_bar3">
+      <div id="room_bar4" class="room_bar4"><%= link_to @room.name_capitalised, @room %>
+        <div class="tools">
+          <a href="<%=edit_room_path(@room)%>"> <i class="fas fa-pencil-alt"></i></a>
+          <a href="<%=rooms_path%>"> <i class="fas fa-arrow-circle-left"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="message_area">
+      <% @messages.each do |m| %>
+        <%if m.user_id==current_user%>
+          <div id="my_message" class="my_message"><%= m.content %></div>
+          <div id="invisible" class="their_message"><%= m.content %></div>
+        <%else%>
+          <div id="their_message" class="their_message" style="width:<%=m.content.length+7%>%!important"><%= m.content %></div>
+          <div id="invisible" class="my_message"><%= m.content %></div>
+        <% end %>
+      <% end %>
+     
+   </div>
+  <meta http-equiv="refresh" content="5">
   <!-- refresh page every 5 seconds -->
 </div>
+</div>
+</button>

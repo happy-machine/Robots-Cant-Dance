@@ -1,0 +1,513 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *= require_tree .
+ *= require_self
+ *= require font-awesome
+ */
+ 
+body {
+  font: 400 16px/1.38 Helvetica;
+  color: rgb(193, 193, 193);
+}
+
+a{
+    color:rgb(53, 53, 53);
+    margin-bottom:5px;
+
+}
+.fa-cogs{
+    -webkit-filter: drop-shadow(0px 2px 4px rgba(19, 19, 19, 0.3));
+    font-size:1.5em;
+    color: azure;
+}
+.fa-cogs:hover{
+    font-size:1.5em;
+    color: rgb(238, 238, 213);
+}
+.cog{
+    margin-top:4.5%;
+    margin-right:2.6%;
+    float:right;
+}
+.page-index {
+  background-color: rgb(12, 12, 12);
+  color: rgb(193, 193, 193);
+}
+
+.page-room {
+  background-color: rgb(0, 0, 0);
+  color: rgb(169, 169, 169);
+}
+
+.back_plate {
+  position: relative;
+  float: left;
+  clear: both;
+  z-index: 0;
+  padding-left:20px;
+  padding-top:47px;
+  width: 80.6666666666%;
+  height: 1056px;
+  margin: -1255px 0 0 10.75%;
+  background-color: rgb(29, 29, 29);
+}
+
+.back_plate2{
+position: relative;
+  float: left;
+  clear: both;
+  z-index: 0;
+  margin-top:110px;
+  padding-left:20px;
+  padding-top:0px;
+  width: 80.6666666666%;
+  height: 1056px;
+  margin: -1255px 0 0 10.75%;
+  background-color: rgb(29, 29, 29);
+}
+
+
+#form_position{
+    margin-left:7%;
+   
+}
+
+.new_user{
+    margin-left:32px;
+    z-index:100;
+    input{
+        border-radius: 2px;
+        padding: 5px 5px 5px 5px;
+    }
+    .actions{
+        bcolor: black;
+    }
+}
+.container {
+  position: relative;
+  float: left;
+  border-radius: 3px;
+}
+
+.element {
+  position: relative;
+  float: left;
+}
+
+.message_box1 {
+  position: relative;
+  float: left;
+  z-index: 6;
+  width: 82.5%;
+  height: 147px;
+  margin: -710px 0 0 17.5%;
+  border-radius: 4px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: -1px 2px 5px rgba(0, 0, 0, .5) inset;
+}
+
+.message_box2 {
+  position: relative;
+  float: left;
+  z-index: 5;
+  width: 83.25%;
+  height: 166px;
+  margin: -720px 0 0 16.75%;
+  border-radius: 5px 3px 3px 10px;
+  background-color: rgb(94, 94, 94);
+  box-shadow: -3px 4px 2px rgba(91, 91, 91, 0.5);
+}
+
+.message_area{
+    display:inline-block;
+    position:absolute;
+    margin-top:20px;
+    z-index:100;
+}
+.my_message {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 3px;
+  margin-top:20px;
+  position: relative;
+  float: left;
+  z-index: 8;
+  width: 100%;
+  min-height: 25px;
+  margin: 0px 0 0 78%;
+  border-right: 1px solid rgb(0, 0, 0);
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 2px;
+  background-color: rgb(255, 254, 254);
+  color:#242424;
+  box-shadow: -1px 1px 1px rgba(193, 189, 189, 0.5);
+  font-size: 1.2vw,
+}
+.their_message {
+    position:relative;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 3px;
+    padding-bottom: 2px;
+    margin-top:10px;
+    left:-30px;
+    z-index: 7;
+    width:100%;
+    min-height: 25px;
+    color:rgb(36, 36, 36);
+    border-top-right-radius: 2px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 2px;
+    background-color: rgb(192, 192, 192);
+    box-shadow: -2px 2px 2px rgba(140, 140, 140, 0.5);
+    font-size: 1.2vw,
+  }
+
+  #invisible{
+      opacity:0;
+      height:10px!important;
+      margin-top:0px!important;
+  }
+
+.news_bar {
+  position: relative;
+  float: left;
+  z-index: 11;
+  width: 80.8333333333%;
+  height: 84px;
+  margin: -1246px 0 0 16.75%;
+  border-right: 1px solid rgb(73, 73, 73);
+  border-bottom: 1px solid rgb(73, 73, 73);
+  border-left: 1px solid rgb(73, 73, 73);
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  background-color: rgb(52, 52, 52);
+}
+
+.news_text {
+  position: relative;
+  float: left;
+  z-index: 12;
+  width: 79%;
+  margin: -1250px 0 0 22.2667%;
+  font-size: 14px;
+  color: rgb(193, 193, 193);
+}
+
+.room_bar1 {
+  position: relative;
+  z-index: 15;
+  margin-left:5%;
+  margin-top:1%;
+  width: 81.8333333333%;
+  height: 43px;
+  border: 1px solid rgb(72, 72, 72);
+  border-radius: 2px;
+  background-color: rgb(136, 135, 135);
+}
+
+.room_bar2 {
+  position: absolute;
+  margin-left:5.35%;
+  margin-top:0.55%;
+  z-index: 17;
+  width: 78.10%;
+  height: 33px;
+  border: 1px solid rgb(72, 72, 72);
+  border-radius: 2px;
+  background-color: rgb(207, 207, 207);
+  color:black;
+  padding-left:10px;
+  padding-top:5px;
+  padding-bottom:1px;
+  text-shadow: 1px 1px #505050;
+}
+
+
+.room_bar3 {
+    position: relative;
+    z-index: 15;
+    margin-left:5%;
+    margin-top:0%;
+    width: 77.8333333333%;
+    height: 43px;
+    border: 1px solid rgb(72, 72, 72);
+    border-radius: 2px;
+    background-color: rgb(136, 135, 135);
+  }
+  
+  .room_bar4{
+    position: absolute;
+    margin-left:0.35%;
+    margin-top:0.6%;
+    padding-top:5px;
+    z-index: 17;
+    width: 97.40%;
+    height: 33px;
+    border: 1px solid rgb(72, 72, 72);
+    border-radius: 2px;
+    background-color: rgb(207, 207, 207);
+    color:black;
+    padding-left:10px;
+    padding-bottom:1px;
+  }
+.room_bar2:hover{
+    background-color: rgb(225, 218, 178);
+}
+.room_bar4:hover{
+    background-color: rgb(225, 218, 178);
+}
+.room_bar:hover{
+    background-color: rgb(225, 218, 178);
+}
+.tools{
+    padding-bottom:5px;
+    float:right;
+    padding-right:10px;
+}
+.side_bar {
+  position: relative;
+  float: left;
+  clear: both;
+  z-index: 2;
+  width: 13.75%;
+  height: 1221px;
+  margin-top: 0px;
+  border: 1px solid rgb(61, 61, 61);
+  border-radius: 0px 5px;
+  background-color: rgb(41, 41, 41);
+}
+
+.text {
+  position: relative;
+  float: left;
+  z-index: 11;
+  width: 79.75%;
+  min-height: 74px;
+  margin: -1241px 0 0 17.1666666666%;
+  font-size: 16px;
+  color: rgb(169, 169, 169);
+}
+
+
+
+.top_bar {
+  position: relative;
+  float: left;
+  z-index: 0;
+  width: 100%;
+  height: 120px;
+  margin-top: -15px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 3px;
+  background-color: rgb(89, 83, 83);
+}
+
+._button {
+  display: block;
+  position: relative;
+  float: left;
+  font-size: 16px;
+  text-align: center;
+}
+
+.container-1 {
+  z-index: 0;
+  width: 106.6666666666%;
+  height: 166px;
+  margin-top: -9px;
+  background-color: rgb(94, 94, 94);
+}
+
+.container-2 {
+  z-index: 8;
+  width: 80.8333333333%;
+  height: 45px;
+  margin: -1142px 0 0 16.75%;
+  border: 1px solid rgb(72, 72, 72);
+  background-color: rgb(136, 135, 135);
+}
+
+.container-3 {
+  z-index: 9;
+  width: 79.75%;
+  height: 35px;
+  margin: -1137px 0 0 17.16667%;
+  border-width: 1px;
+  border-color: rgb(72, 72, 72) rgb(90, 90, 90) rgb(72, 72, 72) rgb(72, 72, 72);
+  border-style: solid;
+  background-color: rgb(207, 207, 207);
+}
+
+.container-4 {
+  clear: both;
+  z-index: 6;
+  width: 106.6666666666%;
+  height: 166px;
+  margin: -720px 0 0 16.75%;
+  background-color: rgb(94, 94, 94);
+}
+
+.element-1 {
+  clear: both;
+  z-index: 2;
+  width: 13.75%;
+  height: 1221px;
+  margin-top: 20px;
+  border-radius: 5px;
+  background-color: rgb(41, 41, 41);
+}
+
+.element-2 {
+  clear: both;
+  z-index: 4;
+  width: 109.6666666666%;
+  height: 1056px;
+  margin: -1246px 0 0 13.75%;
+  background-color: rgb(20, 20, 20);
+}
+
+.element-3 {
+  z-index: 10;
+  width: 80.8333333333%;
+  height: 84px;
+  margin: -1246px 0 0 16.75%;
+  border-right: 1px solid rgb(85, 85, 85);
+  border-bottom: 1px solid rgb(106, 106, 106);
+  border-left: 1px solid rgb(106, 106, 106);
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  background-color: rgb(52, 52, 52);
+}
+
+.element-4 {
+  z-index: 7;
+  width: 79.0833333333%;
+  height: 129px;
+  margin: -700px 0 0 18.5%;
+  border-radius: 4px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: -1px 2px 5px rgba(0, 0, 0, .5) inset;
+}
+
+._button-1 {
+  clear: both;
+  z-index: 1;
+  width: 12.0%;
+  min-width: 12.0%;
+  min-height:151px;
+  height: 151px;
+  margin: -109px 0 0 1.26073%;
+  border-radius: 3px;
+  background-image: url('/Cat_logo_grey.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left top;
+  -webkit-filter: drop-shadow(0px 2px 4px rgba(19, 19, 19, 0.3));
+}
+
+
+._button-3 {
+  clear: both;
+  z-index: 3;
+  width: 10%;
+  height: 33px;
+  margin: -1200px 0 0 1.8073%;
+  border: 1px solid rgb(87, 87, 87);
+  border-radius: 2px;
+  background-color: rgb(62, 62, 62);
+  box-shadow: 0 1px 5px rgba(69, 69, 69, 0.5);
+  color: rgb(169, 166, 166);
+  font-size: 15px;
+}
+
+._button-4 {
+  clear: both;
+  z-index: 3;
+  width: 10%;
+  height: 33px;
+  margin: -1195px 0 0 2.08073%;
+  border: 1px solid rgb(168, 168, 168);
+  border-radius: 4px;
+  background-color: rgb(129, 129, 129);
+  box-shadow: 0 1px 5px rgba(69, 69, 69, 0.5);
+  color: rgb(0, 0, 0);
+  font-size: 15px;
+}
+
+._button-5 {
+
+    clear: both;
+    z-index: 3;
+    width: 10%;
+    height: 33px;
+    margin: -1150px 0 0 1.80%;
+    border: 1px solid rgb(87, 87, 87);
+    border-radius: 2px;
+    background-color: rgb(62, 62, 62);
+    box-shadow: 0 1px 5px rgba(69, 69, 69, 0.5);
+    color: rgb(169, 166, 166);
+    font-size: 15px;
+}
+
+._button-3:hover,
+._button-5:hover {
+  border-color: rgb(142, 142, 142);
+  background-color: rgb(91, 91, 91);
+  box-shadow: 0 1px 5px rgba(69, 69, 69, 0.5);
+  color: rgb(225, 218, 178);
+}
+
+._button-3:active,
+._button-5:active {
+  border-color: rgb(77, 77, 77);
+  background-color: rgb(58, 57, 57);
+  box-shadow: 0 0 5px rgba(69, 69, 69, 0.5);
+  color: rgb(115, 113, 113);
+}
+
+._button-3:focus,
+._button-5:focus {
+  box-shadow: 0 1px 5px rgba(69, 69, 69, 0.5);
+}
+
+._button-6 {
+  z-index: 5;
+  width: 9.3333333333%;
+  height: 33px;
+  margin: -1142px 0 0 2.08073%;
+  border: 1px solid rgb(168, 168, 168);
+  border-radius: 4px;
+  background-color: rgb(129, 129, 129);
+  box-shadow: 0 2px 5px rgba(183, 183, 183, 0.5);
+  color: rgb(0, 0, 0);
+}
+
+._button-4:hover,
+._button-6:hover {
+  border-color: rgb(203, 201, 201);
+  background-color: rgb(173, 168, 168);
+  box-shadow: 0 2px 5px rgba(183, 183, 183, 0.5);
+  color: rgb(67, 65, 65);
+}
+
+._button-4:active,
+._button-6:active {
+  border-color: rgb(135, 134, 134);
+  background-color: rgb(100, 99, 99);
+  box-shadow: 0 0 5px rgba(183, 183, 183, 0.5);
+  color: rgb(59, 59, 59);
+}
