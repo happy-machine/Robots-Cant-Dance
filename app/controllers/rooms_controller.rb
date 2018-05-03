@@ -10,7 +10,6 @@ class RoomsController < ApplicationController
   # GET /rooms/1
   # GET /rooms/1.json
   def show
-    @message = Message.new
     set_room
     @user = current_user
     @messages = @room.messages.all
