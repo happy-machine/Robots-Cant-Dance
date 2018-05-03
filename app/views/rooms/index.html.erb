@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
       <button onClick="window.location='<%=new_room_path%>';" id="new_room" class="_button _button-5">New Room</button>
       <p class="news_text">** NEWS: This week MEGADIV has uploaded a demo on how to troll, we recommend checking it out! HERE **</p>
@@ -15,3 +16,28 @@
     <% end %>
        </div>
        </div>
+=======
+<div class="page-container">
+  <%= render :partial => "rooms/nav_bar" %>
+  <div class="rooms" style="background-image:url(<%= image_path('background-letters.jpg') %>)">
+    <h2>Rooms</h2>
+    <% @rooms.each do |room| %>
+      <div class="room-list">
+        <div class="room-name">
+          <p><%= room.name %></p>
+        </div>
+        <div class="room-link">
+          <p> <%= link_to 'Show', room %></p>
+        </div>
+        <div class="room-edit">
+          <p><%= link_to 'Edit', edit_room_path(room) %></p>
+        </div>
+        <div class="room-delete">
+          <p><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        </div>
+      </div>
+    <% end %>
+    <%= link_to 'New Room', new_room_path, class:"add-room" %>
+  </div>
+</div>
+>>>>>>> master

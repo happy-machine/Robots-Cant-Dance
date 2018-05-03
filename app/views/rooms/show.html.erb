@@ -12,11 +12,17 @@
 
     <div class="message_area">
       <% @messages.each do |m| %>
-        <%if m.user_id==current_user%>
-          <div id="my_message" class="my_message"><%= m.content %></div>
+        <%if m.user==current_user%>
+          <div id="my_message" class="my_message">
+            <%= m.user.name %>: <%= m.content %>
+            <%= m.created_at.time %>
+          </div>
           <div id="invisible" class="their_message"><%= m.content %></div>
         <%else%>
-          <div id="their_message" class="their_message" style="width:<%=m.content.length+7%>%!important"><%= m.content %></div>
+          <div id="their_message" class="their_message" style="width:<%=m.content.length+7%>%!important">
+            <%= m.user.name %>: <%= m.content %>
+            <%= m.created_at.time %>
+          </div>
           <div id="invisible" class="my_message"><%= m.content %></div>
         <% end %>
       <% end %>
