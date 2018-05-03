@@ -1,22 +1,23 @@
-<div class="home-container">
-  <div class="side-bar">
-    <%= render :partial => "rooms/nav_bar" %>
-  </div>
-  <div class="rooms">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <h1>Rooms</h1>
+<div class="page-container">
+  <%= render :partial => "rooms/nav_bar" %>
+  <div class="rooms" style="background-image:url(<%= image_path('background-letters.jpg') %>)">
+    <h2>Rooms</h2>
     <% @rooms.each do |room| %>
       <div class="room-list">
-        <p class="room-name"><%= room.name %></p>
-        <p class="room-link"><%= link_to 'Show', room %></p>
-        <p class="room-edit"><%= link_to 'Edit', edit_room_path(room) %></p>
-        <p class="room-delete"><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        <div class="room-name">
+          <p><%= room.name %></p>
+        </div>
+        <div class="room-link">
+          <p> <%= link_to 'Show', room %></p>
+        </div>
+        <div class="room-edit">
+          <p><%= link_to 'Edit', edit_room_path(room) %></p>
+        </div>
+        <div class="room-delete">
+          <p><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        </div>
       </div>
     <% end %>
-
-
-
-    <%= link_to 'New Room', new_room_path %>
+    <%= link_to 'New Room', new_room_path, class:"add-room" %>
   </div>
 </div>
