@@ -6,5 +6,5 @@ Rails.application.routes.draw do
     resources :messages, only: [:create]
   end
   root to: "rooms#index"
-
+  delete "/rooms/:room_id/messages/:id(.:format)", to: 'messages#destroy', as: 'messages_destroy'
 end

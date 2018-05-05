@@ -1,3 +1,4 @@
+<div class="form_positioning new_room">
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -8,11 +9,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.label :password %> <br />
     <%= f.password_field :password, autocomplete: "off" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
     <% end %>
   </div>
 
@@ -20,12 +20,12 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
-
+</br>
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.label :current_password %> <br />
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
-  
+  </br>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name, autocomplete: "name" %>
@@ -35,7 +35,7 @@
     <%= f.label :bio %><br />
     <%= f.text_field :bio, autocomplete: "bio" %>
   </div>
-
+<br>
   <div class="field">
     <%= f.file_field :avatar %>
   </div>
@@ -50,9 +50,8 @@
     <%= f.submit "Update" %>
   </div>
 <% end %>
-
-<h3>Cancel my account</h3>
-
+</br>
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+</div>

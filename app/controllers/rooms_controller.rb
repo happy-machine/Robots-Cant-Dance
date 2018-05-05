@@ -13,6 +13,9 @@ class RoomsController < ApplicationController
     set_room
     @user = current_user
     @messages = @room.messages.all
+    Room.exists?(id: @room.id-1) ? @last_room=Room.find(@room.id-1) : @last_room = @room
+    Room.exists?(id: @room.id+1) ? @next_room=Room.find(@room.id+1) : next_room = @room
+    @message=@room.messages.new
   end
 
   # GET /rooms/new
@@ -28,17 +31,17 @@ class RoomsController < ApplicationController
   # POST /rooms.json
   def create
     @room = Room.new(room_params)
-    puts "here"
     p @room
     respond_to do |format|
       if @room.save
-        format.html { redirect_to @room, notice: 'Room was successfully created.' }
+        format.html { redirect_to rooms_path, notice: 'Room was successfully created.' }
         format.json { render :show, status: :created, location: @room }
       else
         format.html { render :new }
         format.json { render json: @room.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /rooms/1
@@ -58,6 +61,8 @@ class RoomsController < ApplicationController
   # DELETE /rooms/1
   # DELETE /rooms/1.json
   def destroy
+    @room=Room.find(params[:id])
+    puts "in room dest"
     @room.destroy
     respond_to do |format|
       format.html { redirect_to rooms_url, notice: 'Room was successfully destroyed.' }

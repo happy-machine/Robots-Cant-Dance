@@ -1,25 +1,16 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="initial-scale=1.0">
-  <title>Robots Can't Dance</title>
-     <%= stylesheet_link_tag    'styles', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
-</head>
-<body class="body page-index clearfix">
-  <div id="top_bar" class="top_bar">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-  <a href="<%= edit_user_registration_path(current_user)%>"><i class="fas fa-cogs cog"></i></a></div>
-  <button onClick="window.location='/';" id="logo_home" class="_button _button-1" type="button"></button>
-  <div id="side_bar" class="side_bar"></div>
-  <% if current_user %>
-              <button onClick="window.location='<%=destroy_user_session_path%>';" id="login" class="_button _button-3">Logout</button>
-        <% else %>
-          <button onClick="window.location='<%=new_user_session_path%>';" id="login" class="_button _button-3">Login/Sign-up</button>
-        <% end %>
-   <%= yield %>
+<%= render "./layouts/header" %>
+<body>
+  <div class="main_grid_container">
+    <div id="side_bar" class="side_bar"></div>
+    <div id="header" class="header"><a href="<%= edit_user_registration_path(current_user)%>"><i class="fas fa-cogs cog"></i></a></div>
+    <button onClick="window.location='/';" id="logo_home"  type="button"></button>
+    <% if user_signed_in? %>
+      <button onClick="window.location='<%=destroy_user_session_path%>';" id ="login" class="_button">Logout</button>
+    <% else %>
+      <button onClick="window.location='<%=new_user_session_path%>';"  id="login" class="_button">Login/Sign-up</button>
+    <% end %>
+    <%= yield %>
+    <div id="back_plate" class="back_plate"></div>
+  </div>
 </body>
 </html>

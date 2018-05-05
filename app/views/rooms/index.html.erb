@@ -1,43 +1,47 @@
-<<<<<<< HEAD
 
-      <button onClick="window.location='<%=new_room_path%>';" id="new_room" class="_button _button-5">New Room</button>
-      <p class="news_text">** NEWS: This week MEGADIV has uploaded a demo on how to troll, we recommend checking it out! HERE **</p>
-     <div id="form_position"><div id="back_plate" class="back_plate">
-    <% @rooms.each do |room| %>
-    <div>
-     <div id="room_bar2" class="room_bar2"><%= link_to '', room %>
-        <%= link_to room.name_capitalised, room_path(room) %>
-       <div class="tools">
-      <a href="<%=edit_room_path(room)%>"> <i class="fas fa-pencil-alt"></i></a>
-       <%= link_to '', room, method: :delete, data: { confirm: 'Are you sure?' },class:'far fa-trash-alt' %>
-     </div>
-     </div>
-      <div id="room_bar1" class="room_bar1"></div></div>
-    <% end %>
-       </div>
-       </div>
-=======
-<div class="page-container">
-  <%= render :partial => "rooms/nav_bar" %>
-  <div class="rooms" style="background-image:url(<%= image_path('background-letters.jpg') %>)">
-    <h2>Rooms</h2>
-    <% @rooms.each do |room| %>
-      <div class="room-list">
-        <div class="room-name">
-          <p><%= room.name %></p>
+<button onClick="window.location='<%=new_room_path%>';" id="new_room" class="_button">New Room</button>
+  <span class="news_text">** NEWS: This week MEGADIV has uploaded a demo on how to troll, we recommend checking it out! HERE **</span>
+    <div class="room_list">
+      <% @rooms.each do |room| %>
+        <div class="room_unit">
+          <div class="room_outer_bar">
+            <div class="room_inner_bar"><%= link_to room.name_capitalised, room_path(room) %>
+              <div class="tools">
+                <a href="<%=edit_room_path(room)%>"> <i class="fas fa-pencil-alt"></i></a>
+                <%= link_to '', room, method: :delete, data: { confirm: 'Are you sure?' }, class:'far fa-trash-alt' %>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="room-link">
-          <p> <%= link_to 'Show', room %></p>
-        </div>
-        <div class="room-edit">
-          <p><%= link_to 'Edit', edit_room_path(room) %></p>
-        </div>
-        <div class="room-delete">
-          <p><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-        </div>
-      </div>
-    <% end %>
-    <%= link_to 'New Room', new_room_path, class:"add-room" %>
-  </div>
-</div>
->>>>>>> master
+      <% end %>
+    </div>
+ <script>
+ // JS in progress to allow inline editing of room name
+ /*
+    $('.room_inner_bar').click(function(){
+      console.log('yo')
+    var name = $('.room_inner_bar').text()
+ 
+    $(this)
+        .attr({
+            'type': 'text',
+            'name': 'fname',
+            'id': 'txt_fullname',
+            'size': '30',
+            'value': name
+        })
+        .appendTo('.room_inner_bar');
+    $('.room_inner_bar').focus();
+});
+
+$(document).on('blur','.room_inner_bar', function(){
+    var name = $(this).val();
+    $.ajax({
+      type: 'post',
+      url: 'change-name.xhr?name=' + name,
+      success: function(){
+        $('#fullname').text(name);
+      }
+    });
+});
+   */ </script>

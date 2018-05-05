@@ -1,35 +1,66 @@
 
-<button onClick="window.location='<%=new_room_path%>';" id="new_room" class="_button _button-5">New Room</button>
-  <div id="form_position"><div class="back_plate2">
-    <div id="room_bar3" class="room_bar3">
-      <div id="room_bar4" class="room_bar4"><%= link_to @room.name_capitalised, @room %>
-        <div class="tools">
-          <a href="<%=edit_room_path(@room)%>"> <i class="fas fa-pencil-alt"></i></a>
-          <a href="<%=rooms_path%>"> <i class="fas fa-arrow-circle-left"></i></a>
+<button onClick="window.location='<%=new_room_path%>';" id="new_room" class="_button">New Room</button>
+
+      <div class="show_room"> 
+        <div class="room_inner_bar">
+          <a href="<%=room_path(@last_room)%>"> <i class="fas fa-arrow-circle-left"></i></a>
+          <%= link_to @room.name_capitalised, @room %> 
+          <a href="<%=room_path(@next_room)%>"> <i class="fas fa-arrow-circle-right"></i></a>
+          <a> <i class="fas fa-pencil-alt"></i></a>
         </div>
       </div>
-    </div>
 
-    <div class="message_area">
-      <% @messages.each do |m| %>
-        <%if m.user==current_user%>
-          <div id="my_message" class="my_message">
-            <%= m.user.name %>: <%= m.content %>
-            <%= m.created_at.time %>
+      <div class="message_area">
+        <% @messages.each do |m| %>
+          <div class="message <% if m.user==current_user%>my_message<% else %>their_message<% end %>">
+            <div class="inner" id="<%=m.id%>">
+              <%="#{m.user.name.capitalize!}:  #{m.content}"%>
+              <i class="fas fa-trash-alt trash_message" id="deleteId<%=m.id%>"></i>
+              <span class="date"><%=m.created_at.time.to_s[5...-7] %>
+              </span>
+            </div>
           </div>
-          <div id="invisible" class="their_message"><%= m.content %></div>
-        <%else%>
-          <div id="their_message" class="their_message" style="width:<%=m.content.length+7%>%!important">
-            <%= m.user.name %>: <%= m.content %>
-            <%= m.created_at.time %>
-          </div>
-          <div id="invisible" class="my_message"><%= m.content %></div>
         <% end %>
-      <% end %>
-     
-   </div>
-  <meta http-equiv="refresh" content="5">
-  <!-- refresh page every 5 seconds -->
-</div>
-</div>
-</button>
+
+        <div id="message_box" class="transition">
+          <div id="message_box2" class="message_box2">
+            <div id="message_box1" class="message_box1">
+              <%= form_for(@message, url: room_messages_path(@room), id:"form_input") do |f| %>
+              <%= f.text_field :content, autofocus:true %><br /> 
+              <%= f.submit '' %> 
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+<script>
+var ref
+//activate animation on message_box on mouse over fa_pencil_alt
+$("body").on("keyup", function(e) { 
+  $('#message_content').focus();
+  });
+$('.fa-pencil-alt').click(()=>{ 
+  $('#message_box').toggleClass('open');
+  })
+
+//Show trash icon on mouseover message and remove on mouse leave 
+$('.inner').hover((e)=>{
+  ref = e.target.id
+  $('#deleteId'+ref).show()
+ })
+  .mouseleave(function() {      
+    if(!$('#deleteId'+ref).hasClass('active')){
+        $('#deleteId'+ref).hide()
+    }})
+
+//send destroy request via ajax on trash button click after grabbing and sending CSRF token
+$('.trash_message').click(function(){
+  if (confirm('are you sure you want to delete this message?')){
+    $.ajax({
+            url: '/rooms/<%=@room.id%>/messages/'+ref,
+            type: 'DELETE',
+            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+        })}
+})
+</script>
