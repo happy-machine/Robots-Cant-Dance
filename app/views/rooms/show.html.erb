@@ -45,7 +45,7 @@
   messageWindow.length ? messageWindow[messageWindow.length-1].scrollIntoView({block: "end"}) : null
 })
 
-var ref
+var message_id
 //activate animation on message_box on mouse over fa_pencil_alt
 $("body").on("keyup", function(e) { 
   $('#message_content').focus();
@@ -57,7 +57,7 @@ $('.fa-pencil-alt').click(()=>{
 //Show trash icon on mouseover message and remove on mouse leave 
 $('.inner').hover((e)=>{
   message_id = e.target.id
-  $('#deleteId'+ref).show()
+  $('#deleteId' + message_id).show()
  })
   .mouseleave(function() {      
     if(!$('#deleteId' + message_id).hasClass('active')){
@@ -68,7 +68,7 @@ $('.inner').hover((e)=>{
 $('.trash_message').click(function(){
   if (confirm('are you sure you want to delete this message?')){
     $.ajax({
-            url: '/rooms/<%=@room.id%>/messages/'+ref,
+            url: '/rooms/<%=@room.id%>/messages/' + message_id,
             type: 'DELETE',
             beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
         }).done(()=>{console.log('yo')})}
