@@ -3,9 +3,11 @@
   <div class="main_grid_container">
     <div id="side_bar" class="side_bar"></div>
     <div id="header" class="header"><a href="<%= edit_user_registration_path(current_user)%>"><i class="fas fa-cogs cog"></i></a></div>
-    <button onClick="window.location='/';" id="logo_home"  type="button"></button>
-    <% if user_signed_in? %>
-      <button onClick="window.location='<%=destroy_user_session_path%>';" id ="login" class="_button">Logout</button>
+    <button onClick="window.location='/';" class="logo_home" ></button>
+        <button onClick="window.location='/';" class="transition_front" ></button>
+      
+      <%if user_signed_in? %>
+      <%=link_to 'Logout', destroy_user_session_path, method: :delete, id:"login", class:"_button" %>
     <% else %>
       <button onClick="window.location='<%=new_user_session_path%>';"  id="login" class="_button">Login/Sign-up</button>
     <% end %>
@@ -14,3 +16,14 @@
   </div>
 </body>
 </html>
+<script>
+
+$('.logo_home').hover(function(){
+  $('.logo_home').fadeTo(3000,0.1);
+  $('.transition_front').fadeTo(3000,1);
+}, function() {
+  $('.transition_front').fadeTo(3000,0.1)
+  $('.logo_home').fadeTo(3000,1);
+});
+
+</script>

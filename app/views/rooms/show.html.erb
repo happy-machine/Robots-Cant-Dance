@@ -33,8 +33,13 @@
           </div>
         </div>
       </div>
-      
+
 <script>
+ document.addEventListener("DOMContentLoaded",function(){
+  messageWindow=document.getElementsByClassName('inner')
+  messageWindow.length ? messageWindow[messageWindow.length-1].scrollIntoView({block: "end"}) : null
+})
+
 var ref
 //activate animation on message_box on mouse over fa_pencil_alt
 $("body").on("keyup", function(e) { 
@@ -60,7 +65,7 @@ $('.trash_message').click(function(){
     $.ajax({
             url: '/rooms/<%=@room.id%>/messages/'+ref,
             type: 'DELETE',
-            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-        })}
+            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
+        }).done(()=>{console.log('yo')})}
 })
 </script>
