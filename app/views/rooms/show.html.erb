@@ -35,6 +35,7 @@
       </div>
 
 <script>
+
  document.addEventListener("DOMContentLoaded",function(){
   messageWindow=document.getElementsByClassName('inner')
   messageWindow.length ? messageWindow[messageWindow.length-1].scrollIntoView({block: "end"}) : null
@@ -51,12 +52,12 @@ $('.fa-pencil-alt').click(()=>{
 
 //Show trash icon on mouseover message and remove on mouse leave 
 $('.inner').hover((e)=>{
-  ref = e.target.id
+  message_id = e.target.id
   $('#deleteId'+ref).show()
  })
   .mouseleave(function() {      
-    if(!$('#deleteId'+ref).hasClass('active')){
-        $('#deleteId'+ref).hide()
+    if(!$('#deleteId' + message_id).hasClass('active')){
+        $('#deleteId' + message_id).hide()
     }})
 
 //send destroy request via ajax on trash button click after grabbing and sending CSRF token
