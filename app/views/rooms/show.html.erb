@@ -3,10 +3,12 @@
 
       <div class="show_room"> 
         <div class="room_inner_bar">
-          <a href="<%=room_path(@last_room)%>"> <i class="fas fa-arrow-circle-left"></i></a>
+          <a href="<%=room_path(@last_room||=@room)%>"> <i class="fas fa-arrow-circle-left"></i></a>
           <%= link_to @room.name_capitalised, @room %> 
-          <a href="<%=room_path(@next_room)%>"> <i class="fas fa-arrow-circle-right"></i></a>
+          <% if user_signed_in? %>
+          <a href="<%=room_path(@next_room||=@room)%>"> <i class="fas fa-arrow-circle-right"></i></a>
           <a> <i class="fas fa-pencil-alt"></i></a>
+          <% end %>
         </div>
       </div>
 
@@ -22,17 +24,19 @@
           </div>
         <% end %>
 
+        <%if user_signed_in? %>
         <div id="message_box" class="transition">
           <div id="message_box2" class="message_box2">
             <div id="message_box1" class="message_box1">
               <%= form_for(@message, url: room_messages_path(@room), id:"form_input") do |f| %>
-              <%= f.text_field :content, autofocus:true %><br /> 
+              <%= f.text_area :content, autofocus:true %><br /> 
               <%= f.submit '' %> 
               <% end %>
             </div>
           </div>
         </div>
       </div>
+        <% end %>
 
 <script>
 
@@ -69,4 +73,10 @@ $('.trash_message').click(function(){
             beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
         }).done(()=>{console.log('yo')})}
 })
+//submit text area on return
+$('#message_content').keypress(function(e){
+      if(e.which == 13){
+           $(this).closest('form').submit();
+       }
+    });
 </script>

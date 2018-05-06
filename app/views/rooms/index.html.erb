@@ -7,8 +7,10 @@
           <div class="room_outer_bar">
             <div class="room_inner_bar"><%= link_to room.name_capitalised, room_path(room) %>
               <div class="tools">
+              <% if user_signed_in? && current_user.is_moderator %>
                 <a href="<%=edit_room_path(room)%>"> <i class="fas fa-pencil-alt"></i></a>
                 <%= link_to '', room, method: :delete, data: { confirm: 'Are you sure?' }, class:'far fa-trash-alt' %>
+              <% end %>
               </div>
             </div>
           </div>

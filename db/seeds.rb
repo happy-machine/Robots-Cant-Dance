@@ -9,7 +9,7 @@
 
 
 users = [
-{email: 'a@a.com', name: 'a', bio: 'a', password:'blahblah'},
+{email: 'a@a.com', name: 'a', bio: 'a', password:'blahblah', is_moderator: true},
 {email: 'b@a.com', name: 'b', bio: 'b', password:'blahblah'},
 {email: 'c@a.com', name: 'c', bio: 'c', password:'blahblah'},
 {email: 'd@a.com', name: 'd', bio: 'd', password:'blahblah'}
