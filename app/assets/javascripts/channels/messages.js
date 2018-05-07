@@ -1,14 +1,22 @@
-App.messages = App.cable.subscriptions.create("MessagesChannel", {
-  connected: function() {
-    // Called when the subscription is ready for use on the server
-  },
+function scroll(){
+  var objDiv = document.querySelector("#message_area");
+  objDiv.scrollTop = objDiv.scrollHeight;
+}
 
-  disconnected: function() {
-    // Called when the subscription has been terminated by the server
-  },
+function initMessages(room){
+  scroll();
+  App.messages = App.cable.subscriptions.create({channel: "MessagesChannel", room: room}, {
+    connected: function() {
+    },
 
-  received: function(data) {
-    // Called when there's incoming data on the websocket for this channel
-    alert data.content
-  }
-});
+    disconnected: function() {
+    },
+
+    received: function(data) {
+      // Called when there's incoming data on the websocket for this channel
+      document.querySelector("#message_area").innerHTML += data.message;
+      document.querySelector('#textarea').value = '';
+      scroll();
+    }
+  });
+}

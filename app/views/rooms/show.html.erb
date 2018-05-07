@@ -9,7 +9,7 @@
         </div>
       </div>
 
-      <div class="message_area">
+      <div id="message_area">
         <% @room.messages.each do |message| %>
           <%= render(partial: 'rooms/message', locals: { m: message }) %>
         <% end %>
