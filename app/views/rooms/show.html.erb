@@ -10,24 +10,25 @@
       </div>
 
       <div id="message_area">
-        <% @messages.each do |message| %>
-          <%= render(partial: 'rooms/message', locals: { m: message }) %>
-        <% end %>
+        <div id="render_messages">
+          <% @messages.each do |message| %>
+            <%= render(partial: 'rooms/message', locals: { m: message }) %>
+          <% end %>
+        </div>
 
         <%if user_signed_in? %>
           <div id="message_box" class="transition">
             <div id="message_box2" class="message_box2">
               <div id="message_box1" class="message_box1">
-                <%= form_for(@message, local:false, remote: true, url: room_messages_path(@room), id:"form_input") do |f| %>
+                <%= form_with url: room_messages_path(@room), method: :post, local: false, id:"form_input" do |f|%>
                   <%= f.text_area :content, autofocus:true, id: "textarea" %><br />
                   <%= f.submit '' %>
                 <% end %>
               </div>
             </div>
           </div>
-        </div>
         <% end %>
-
+      </div>
 <script>
 
  document.addEventListener("DOMContentLoaded",function(){
