@@ -10,7 +10,7 @@
       </div>
 
       <div id="message_area">
-        <% @room.messages.each do |message| %>
+        <% @messages.each do |message| %>
           <%= render(partial: 'rooms/message', locals: { m: message }) %>
         <% end %>
 
@@ -39,7 +39,7 @@
 var message_id
 //activate animation on message_box on mouse over fa_pencil_alt
 $("body").on("keyup", function(e) {
-  $('#message_content').focus();
+  $('#textarea').focus();
   });
 $('.fa-pencil-alt').click(()=>{
   $('#message_box').toggleClass('open');
@@ -65,7 +65,7 @@ $('.trash_message').click(function(){
         }).done(()=>{console.log('yo')})}
 })
 //submit text area on return
-$('#message_content').keypress(function(e){
+$('#textarea').keypress(function(e){
       if(e.which == 13){
            $(this).closest('form').submit();
        }
