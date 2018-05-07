@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   end
   root to: "rooms#index"
   delete "/rooms/:room_id/messages/:id(.:format)", to: 'messages#destroy', as: 'messages_destroy'
+  mount ActionCable.server, at: '/cable'
 end
