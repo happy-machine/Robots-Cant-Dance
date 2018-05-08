@@ -13,7 +13,7 @@
  *= require_self
  *= require font-awesome
  */
- 
+
 body {
   font: 400 16px/1.38 Helvetica;
   color: rgb(0, 0, 0);
@@ -70,7 +70,7 @@ textarea{
 }
 #login{
   grid-column: 2/span 1;
-  grid-row: 6; 
+  grid-row: 6;
   color: rgb(169, 166, 166);
   background-color: rgb(62, 62, 62);
   box-shadow: 0 1px 5px rgba(69, 69, 69, 0.5);
@@ -94,7 +94,7 @@ textarea{
 
 #new_room{
   grid-column: 2/span 1;
-  grid-row: 7; 
+  grid-row: 7;
   color: rgb(169, 166, 166);
   background-color: rgb(62, 62, 62);
   box-shadow: 0 1px 5px rgba(69, 69, 69, 0.5);
@@ -238,8 +238,8 @@ right:37px!important;
         }
       }
       .room_inner_bar:hover{
-        color:white;  
-        background-color:transparent!important;  
+        color:white;
+        background-color:transparent!important;
       }
     text-align: center;
     grid-column: 6/ span 2;
@@ -288,8 +288,8 @@ right:37px!important;
 }
 }
 #message_box{
- 
-  margin-left:-1200px; 
+
+  margin-left:-1200px;
 }
 .open{
   margin-left:0px !important;
@@ -452,7 +452,7 @@ right:37px!important;
   box-shadow: 0 0 5px rgba(183, 183, 183, 0.5);
   color: rgb(59, 59, 59);
 }
-.message_area{
+#message_area{
   z-index:1000000;
   overflow:auto;
   grid-column: 4/span 6;
@@ -485,7 +485,7 @@ right:37px!important;
 
   &.my_message{
     text-align:right;
-    
+
     .inner{
       text-align:left;
       padding-right:30px;
@@ -507,7 +507,7 @@ right:37px!important;
       .trash_message{
         margin-left:5px!important;
         margin-right:-14px;
-        display:none;     
+        display:none;
       }
     }
   }
@@ -530,7 +530,7 @@ right:37px!important;
       }
       .trash_message{
         margin-left:5px!important;
-        display:none;     
+        display:none;
       }
     }
   }

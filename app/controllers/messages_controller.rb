@@ -1,15 +1,21 @@
 class MessagesController < ApplicationController
   def create
     @room = Room.find(params[:room_id])
-    if ( params[:message][:content] == "")
-      flash[:alert] = "Message shouldn't be blank"
-      redirect_to room_path(@room)
+    @message = @room.messages.build(content: params[:content], user: current_user)
+    if @message.save
+      ActionCable.server.broadcast "MessagesChannel:#{@room.id}",
+                                   message: render_message(@message)
+
     else
-      @message = @room.messages.create!(content: params[:message][:content], user: current_user, room: @room)
+      flash[:alert] = "Message shouldn't be blank"
       redirect_to room_path(@room)
     end
   end
 
+  def render_message(message)
+    render(partial: 'rooms/message', locals: { m: message })
+  end
+  
   def destroy
     puts "destroying"
     @room = Room.find(params[:room_id])

@@ -1,7 +1,7 @@
-      <div class="show_room"> 
+      <div class="show_room">
         <div class="room_inner_bar">
           <a href="<%=room_path(@last_room||=@room)%>"> <i class="fas fa-arrow-circle-left"></i></a>
-          <%= link_to @room.name_capitalised, @room %> 
+          <%= link_to @room.name_capitalised, @room %>
           <% if user_signed_in? %>
           <a href="<%=room_path(@next_room||=@room)%>"> <i class="fas fa-arrow-circle-right"></i></a>
           <a> <i class="fas fa-pencil-alt"></i></a>
@@ -9,54 +9,49 @@
         </div>
       </div>
 
-      <div class="message_area">
-        <% @messages.each do |m| %>
-          <div class="message <% if m.user==current_user%>my_message<% else %>their_message<% end %>">
-            <div class="inner" id="<%=m.id%>">
-              <%="#{m.user.name.capitalize!}:  #{m.content}"%>
-              <i class="fas fa-trash-alt trash_message" id="deleteId<%=m.id%>"></i>
-              <span class="date"><%=m.created_at.time.to_s[5...-7] %>
-              </span>
-            </div>
-          </div>
-        <% end %>
+      <div id="message_area">
+        <div id="render_messages">
+          <% @messages.each do |message| %>
+            <%= render(partial: 'rooms/message', locals: { m: message }) %>
+          <% end %>
+        </div>
 
         <%if user_signed_in? %>
-        <div id="message_box" class="transition">
-          <div id="message_box2" class="message_box2">
-            <div id="message_box1" class="message_box1">
-              <%= form_for(@message, url: room_messages_path(@room), id:"form_input") do |f| %>
-              <%= f.text_area :content, autofocus:true %><br /> 
-              <%= f.submit '' %> 
-              <% end %>
+          <div id="message_box" class="transition">
+            <div id="message_box2" class="message_box2">
+              <div id="message_box1" class="message_box1">
+                <%= form_with url: room_messages_path(@room), method: :post, local: false, id:"form_input" do |f|%>
+                  <%= f.text_area :content, autofocus:true, id: "textarea" %><br />
+                  <%= f.submit '' %>
+                <% end %>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
         <% end %>
-
+      </div>
 <script>
 
  document.addEventListener("DOMContentLoaded",function(){
-  messageWindow=document.getElementsByClassName('inner')
-  messageWindow.length ? messageWindow[messageWindow.length-1].scrollIntoView({block: "end"}) : null
-})
+   messageWindow=document.getElementsByClassName('inner')
+   messageWindow.length ? messageWindow[messageWindow.length-1].scrollIntoView({block: "end"}) : null
+   initMessages(<%= @room.id %>);
+});
 
 var message_id
 //activate animation on message_box on mouse over fa_pencil_alt
-$("body").on("keyup", function(e) { 
-  $('#message_content').focus();
+$("body").on("keyup", function(e) {
+  $('#textarea').focus();
   });
-$('.fa-pencil-alt').click(()=>{ 
+$('.fa-pencil-alt').click(()=>{
   $('#message_box').toggleClass('open');
   })
 
-//Show trash icon on mouseover message and remove on mouse leave 
+//Show trash icon on mouseover message and remove on mouse leave
 $('.inner').hover((e)=>{
   message_id = e.target.id
   $('#deleteId' + message_id).show()
  })
-  .mouseleave(function() {      
+  .mouseleave(function() {
     if(!$('#deleteId' + message_id).hasClass('active')){
         $('#deleteId' + message_id).hide()
     }})
@@ -71,7 +66,7 @@ $('.trash_message').click(function(){
         }).done(()=>{console.log('yo')})}
 })
 //submit text area on return
-$('#message_content').keypress(function(e){
+$('#textarea').keypress(function(e){
       if(e.which == 13){
            $(this).closest('form').submit();
        }
