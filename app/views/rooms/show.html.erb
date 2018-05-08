@@ -10,24 +10,21 @@
       </div>
 
       <div id="message_area">
-        <div id="render_messages">
           <% @messages.each do |message| %>
             <%= render(partial: 'rooms/message', locals: { m: message }) %>
           <% end %>
-        </div>
-
-        <%if user_signed_in? %>
-          <div id="message_box" class="transition">
-            <div id="message_box2" class="message_box2">
-              <div id="message_box1" class="message_box1">
-                <%= form_with url: room_messages_path(@room), method: :post, local: false, id:"form_input" do |f|%>
-                  <%= f.text_area :content, autofocus:true, id: "textarea" %><br />
-                  <%= f.submit '' %>
-                <% end %>
+          <%if user_signed_in? %>
+            <div id="message_box" class="transition">
+              <div id="message_box2" class="message_box2">
+                <div id="message_box1" class="message_box1">
+                  <%= form_with url: room_messages_path(@room), method: :post, local: false, id:"form_input" do |f|%>
+                    <%= f.text_area :content, autofocus:true, id: "textarea" %><br />
+                    <%= f.submit '' %>
+                  <% end %>
+                </div>
               </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
       </div>
 <script>
 
@@ -49,6 +46,7 @@ $('.fa-pencil-alt').click(()=>{
 //Show trash icon on mouseover message and remove on mouse leave
 $('.inner').hover((e)=>{
   message_id = e.target.id
+  console.log(e)
   $('#deleteId' + message_id).show()
  })
   .mouseleave(function() {
