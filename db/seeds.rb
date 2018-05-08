@@ -9,10 +9,10 @@
 
 
 users = [
-{email: 'a@a.com', name: 'a', bio: 'a', password:'blahblah', is_moderator: true},
-{email: 'b@a.com', name: 'b', bio: 'b', password:'blahblah'},
-{email: 'c@a.com', name: 'c', bio: 'c', password:'blahblah'},
-{email: 'd@a.com', name: 'd', bio: 'd', password:'blahblah'}
+{email: 'a@a.com', name: 'Jimmy the Bell', bio: 'a', password:'blahblah', is_moderator: true},
+{email: 'b@a.com', name: 'Barry White', bio: 'b', password:'blahblah'},
+{email: 'c@a.com', name: 'Sinead o\' Connor', bio: 'c', password:'blahblah'},
+{email: 'd@a.com', name: 'Fortune Edwards', bio: 'd', password:'blahblah'}
 ]
 
 us = users.map do |user|

@@ -35,11 +35,16 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'cucumber-rails', :require => false
   gem 'rspec-rails'
-  gem 'capybara'
+  gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
   gem 'shoulda-matchers'
   gem 'database_cleaner'
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'factory_bot_rails'
+  gem 'pry'
+  gem 'webrick'
+  gem 'selenium-webdriver'
 end
 
 group :development do
