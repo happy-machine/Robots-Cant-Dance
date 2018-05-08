@@ -87,9 +87,9 @@ RSpec.describe RoomsController, type: :controller do
         }.to change(Room, :count).by(1)
       end
 
-      it "redirects to the created room" do
+      it "redirects to the rooms page" do
         post :create, params: {room: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(Room.last)
+        expect(response).to redirect_to('/rooms')
       end
     end
 

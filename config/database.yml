@@ -55,7 +55,7 @@ development:
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test:
+test: &test
   <<: *default
   url: postgresql://banterbox:1234@localhost:5432/banterbox-test
 
@@ -83,3 +83,6 @@ production:
   database: BanterBox_production
   username: BanterBox
   password: <%= ENV['BANTERBOX_DATABASE_PASSWORD'] %>
+
+cucumber:
+  <<: *test
