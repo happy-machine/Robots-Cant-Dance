@@ -6,13 +6,13 @@ RSpec.describe "Messaging", :type => :system do
   }
   
   before do
-    @room = create(:room, creator: valid_user)
+    @room = create(:room)
     @room.messages.create!(content: "Message 1", user: valid_user, created_at: Time.parse('2018-04-30T12:01:00Z'))
     @room.messages.create!(content: "Message 2", user: valid_user, created_at: Time.parse('2018-04-30T12:02:00.1Z'))
   end
   
   def login_as(user)
-    visit '/'
+    visit '/users/sign_in'
     fill_in 'Email', with: user.email
     fill_in 'Password', with: 'pass123'    
     click_button('Log in')

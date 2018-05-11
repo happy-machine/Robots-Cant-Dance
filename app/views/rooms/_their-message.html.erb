@@ -1,0 +1,7 @@
+<div class="message their_message">
+  <div class="inner" id="<%=m.id%>">
+   <i class="fas fa-trash-alt trash_message" id="deleteId<%=m.id%>"></i>
+    <%="#{m.user.name.capitalize!}:  #{m.content}"%>
+    <span class="date"><%=m.created_at.time.to_s[5...-7] %> </span>
+  </div>
+</div>

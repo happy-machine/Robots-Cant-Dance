@@ -55,7 +55,6 @@ textarea{
 .back_plate {
   grid-column: 5/span 4;
   grid-row: 4/span 6;
-  z-index: 0;
   padding-left:20px;
   padding-top:47px;
   background: linear-gradient(#3c3c3c,#1d1d1d);
@@ -127,14 +126,19 @@ textarea{
 }
 .logo_front:hover{
   opacity:1;
-
 }
 a{
   padding-top:5px;
   color:rgb(19, 19, 19);
+  font-weight:400;
 }
 a:hover{
   font-weight:500;
+}
+a:focus{
+ outline: 0px solid transparent;
+ white-space: nowrap;
+    overflow: hidden;
 }
 .fa-gears{
     -webkit-filter: drop-shadow(0px 2px 4px rgba(19, 19, 19, 0.3));
@@ -169,7 +173,7 @@ color:rgb(148, 144, 144);
 right:37px!important;
 }
 .fa-trash-alt{
-  margin-top: -4px !important
+  margin-top: -6px !important
 }
 .fa-pencil-alt:hover{
   z-index:10000000;
@@ -264,16 +268,16 @@ right:37px!important;
     margin-top:10px;
     position:relative;
     z-index: 10000000;
-    height: 35px;
+    height: 31px;
     border: 1px solid rgb(72, 72, 72)!important;
     border-radius: 2px;
     background-color: rgb(136, 135, 135)!important;
   }
   .room_inner_bar {
     z-index: 10000000;
-    margin-left:2px;
-    margin-top:3px;
-    margin-right:3px;
+    margin-left:4px;
+    margin-top: 1px;
+    margin-right:4px;
     height: 27px;
     border: 1px solid rgb(72, 72, 72);
     border-radius: 2px;
@@ -328,7 +332,7 @@ right:37px!important;
 }
 
 .room_inner_bar:hover{
-    background-color: rgb(247, 236, 199)!important;
+    background-color: rgb(228, 222, 189)!important;
 }
 
 .tools{
@@ -362,47 +366,7 @@ right:37px!important;
   z-index:10000;
 }
 
-._button-3 {
-  clear: both;
-  z-index: 3;
-  width: 10%;
-  height: 33px;
-  margin: -1200px 0 0 1.8073%;
-  border: 1px solid rgb(87, 87, 87);
-  border-radius: 2px;
-  background-color: rgb(62, 62, 62);
-  box-shadow: 0 1px 5px rgba(69, 69, 69, 0.5);
-  color: rgb(169, 166, 166);
-  font-size: 15px;
-}
 
-._button-4 {
-  clear: both;
-  z-index: 3;
-  width: 10%;
-  height: 33px;
-  margin: -1195px 0 0 2.08073%;
-  border: 1px solid rgb(168, 168, 168);
-  border-radius: 4px;
-  background-color: rgb(129, 129, 129);
-  box-shadow: 0 1px 5px rgba(69, 69, 69, 0.5);
-  color: rgb(0, 0, 0);
-  font-size: 15px;
-}
-
-._button-5 {
-    clear: both;
-    z-index: 3;
-    width: 10%;
-    height: 33px;
-    margin: -1150px 0 0 1.80%;
-    border: 1px solid rgb(87, 87, 87);
-    border-radius: 2px;
-    background-color: rgb(62, 62, 62);
-    box-shadow: 0 1px 5px rgba(69, 69, 69, 0.5);
-    color: rgb(169, 166, 166);
-    font-size: 15px;
-}
 
 ._button-3:hover,
 #login:hover,#new_room:hover {
@@ -412,46 +376,6 @@ right:37px!important;
   color: rgb(247, 236, 199);
 }
 
-._button-3:active,
-._button-5:active {
-  border-color: rgb(77, 77, 77);
-  background-color: rgb(58, 57, 57);
-  box-shadow: 0 0 5px rgba(69, 69, 69, 0.5);
-  color: rgb(115, 113, 113);
-}
-
-._button-3:focus,
-._button-5:focus {
-  box-shadow: 0 1px 5px rgba(69, 69, 69, 0.5);
-}
-
-._button-6 {
-  z-index: 5;
-  width: 9.3333333333%;
-  height: 33px;
-  margin: -1142px 0 0 2.08073%;
-  border: 1px solid rgb(168, 168, 168);
-  border-radius: 4px;
-  background-color: rgb(129, 129, 129);
-  box-shadow: 0 2px 5px rgba(183, 183, 183, 0.5);
-  color: rgb(0, 0, 0);
-}
-
-._button-4:hover,
-._button-6:hover {
-  border-color: rgb(203, 201, 201);
-  background-color: rgb(173, 168, 168);
-  box-shadow: 0 2px 5px rgba(183, 183, 183, 0.5);
-  color: rgb(67, 65, 65);
-}
-
-._button-4:active,
-._button-6:active {
-  border-color: rgb(135, 134, 134);
-  background-color: rgb(100, 99, 99);
-  box-shadow: 0 0 5px rgba(183, 183, 183, 0.5);
-  color: rgb(59, 59, 59);
-}
 #message_area{
   z-index:1000000;
   overflow:auto;
@@ -461,7 +385,7 @@ right:37px!important;
 
 .message{
   .delete_button{
-    display:none;
+   
   }
   padding-top:10px;
   padding-bottom:10px;
@@ -476,6 +400,15 @@ right:37px!important;
     font-size: 80%;
     display:inline-block;
 
+    .trash_message{
+      visibility:hidden;
+    }
+
+    &:hover{
+      i{
+        visibility:visible;
+      }
+    }
     .date{
       padding-top:7px;
       font-size:56%;
@@ -488,7 +421,7 @@ right:37px!important;
 
     .inner{
       text-align:left;
-      padding-right:30px;
+     
       border-right: 1px solid rgb(0, 0, 0);
       border-top-left-radius: 8px;
       border-bottom-left-radius: 15px;
@@ -502,12 +435,11 @@ right:37px!important;
       padding-bottom:5px;
       .date{
         text-align:right;
-        margin-right:-10px!important;
+        margin-right:10px!important;
       }
       .trash_message{
-        margin-left:5px!important;
-        margin-right:-14px;
-        display:none;
+        margin-left:2px;
+        z-index:1000;
       }
     }
   }
@@ -521,16 +453,17 @@ right:37px!important;
       border-bottom-left-radius: 2px;
       background-color: rgb(192, 192, 192);
       box-shadow: -2px 2px 2px rgba(140, 140, 140, 0.5);
-      padding-left:30px;
+      padding-left:5px;
       padding-bottom:5px;
       font-size: 70%;
       .date{
-        margin-left:-10px!important;
+      margin-left:10px;
         text-align:left;
       }
       .trash_message{
-        margin-left:5px!important;
-        display:none;
+        margin-right:2px;
+        margin-left:2px;
+        z-index:1000;
       }
     }
   }

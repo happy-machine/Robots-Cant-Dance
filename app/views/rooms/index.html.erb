@@ -6,7 +6,7 @@
             <div class="room_inner_bar"><%= link_to room.name_capitalised, room_path(room) %>
               <div class="tools">
               <% if user_signed_in? && current_user.is_moderator %>
-                <a href="<%=edit_room_path(room)%>"> <i class="fas fa-pencil-alt"></i></a>
+                <a><i class="fas fa-pencil-alt"></i></a>
                 <%= link_to '', room, method: :delete, data: { confirm: 'Are you sure?' }, class:'far fa-trash-alt' %>
               <% end %>
               </div>
@@ -16,32 +16,28 @@
       <% end %>
     </div>
  <script>
- // JS in progress to allow inline editing of room name
- /*
-    $('.room_inner_bar').click(function(){
-      console.log('yo')
-    var name = $('.room_inner_bar').text()
+ // Inline editing of room name
  
-    $(this)
-        .attr({
-            'type': 'text',
-            'name': 'fname',
-            'id': 'txt_fullname',
-            'size': '30',
-            'value': name
-        })
-        .appendTo('.room_inner_bar');
-    $('.room_inner_bar').focus();
+$('.fa-pencil-alt').click(function(e){
+  console.log('clicked')
+  var roomName = e.target.closest('.room_inner_bar').firstChild
+  var roomId = roomName.href.split('/')[4]
+  roomName.setAttribute('contenteditable',true)
+  roomName.focus();
+  roomName.style.fontWeight=600
+  document.addEventListener('keypress', (event) => {
+    if(event.keyCode == 13 && roomId){
+      $.ajax({
+              url: '/rooms/'+roomId,
+              type: 'PUT',
+              data: {name: roomName.text},
+              beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
+          })
+      event.preventDefault();
+      roomName.style.fontWeight=400
+      roomName.setAttribute('contenteditable',false)
+      roomName.blur();
+    }
+  })    
 });
-
-$(document).on('blur','.room_inner_bar', function(){
-    var name = $(this).val();
-    $.ajax({
-      type: 'post',
-      url: 'change-name.xhr?name=' + name,
-      success: function(){
-        $('#fullname').text(name);
-      }
-    });
-});
-   */ </script>
+  </script>
