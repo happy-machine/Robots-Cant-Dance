@@ -10,6 +10,7 @@ function initMessages(room){
     },
 
     received: function(data) {
+      console.log(data)
       //structure and append populated elements to action cable message
       if (data.message.message_obj.user_id == data.message.current_user.id){
         $("#message_area").append('<div class="message my_message">  <div class="inner" id="'+ data.message.message_obj.id +'">' + 
