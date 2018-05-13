@@ -3,15 +3,31 @@ class MessagesController < ApplicationController
     @room = Room.find(params[:room_id])
     @message = @room.messages.build(content: params[:content], user: current_user)
     if @message.save
-      ActionCable.server.broadcast "MessagesChannel:#{@room.id}", message: json.object do
-        json.message_object @message
-        json.current_user current_user
-        json.user_name @message.user.name
-      end
-      #message: {message_obj: @message, current_user: current_user, user_name: @message.user.name}                       
+      ActionCable.server.broadcast "MessagesChannel:#{@room.id}", message: {message_obj: @message, current_user: current_user, user_name: @message.user.name}                       
     else
     flash[:alert] = "Message shouldn't be blank"
     redirect_to room_path(@room)
+    end
+  end
+
+  def show
+    puts 'message show'
+    @message=Message.find(params[:id])
+    p @message
+
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render :show }
+    end
+  end
+
+  def index
+    puts 'message index'
+    p params
+    @messages=Room.find(params[:room_id]).messages.all
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render :index }
     end
   end
 
