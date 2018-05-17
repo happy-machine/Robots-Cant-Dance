@@ -11,10 +11,7 @@ class MessagesController < ApplicationController
   end
 
   def show
-    puts 'message show'
     @message=Message.find(params[:id])
-    p @message
-
     respond_to do |format|
       format.html { render :show }
       format.json { render :show }
@@ -22,8 +19,6 @@ class MessagesController < ApplicationController
   end
 
   def index
-    puts 'message index'
-    p params
     @messages=Room.find(params[:room_id]).messages.all
     respond_to do |format|
       format.html { render :index }

@@ -254,13 +254,15 @@ right:37px!important;
     margin-top:10px;
     margin-left:12.5%;
     margin-right:12.5%;
-    height:15px;
+    height:70%;
 }
 .room_list{
   display:inline-block;
   padding-top:30px;
-  grid-column: 6/ span 2;
+  grid-column-start: 6;
+  grid-column-end: 7;
   grid-row-start: 5;
+  width: 98%; // React has broken column span
 
   .room_unit{
     margin:6px;

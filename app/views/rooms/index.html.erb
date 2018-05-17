@@ -1,23 +1,56 @@
-  <span class="news_text">** NEWS: This week MEGADIV has uploaded a demo on how to troll, we recommend checking it out! HERE **</span>
-    <div class="room_list">
-      <% @rooms.each do |room| %>
-        <div class="room_unit">
-          <div class="room_outer_bar">
-            <div class="room_inner_bar"><%= link_to room.name_capitalised, room_path(room) %>
-              <div class="tools">
-              <% if user_signed_in? && current_user.is_moderator %>
-                <a><i class="fas fa-pencil-alt"></i></a>
-                <%= link_to '', room, method: :delete, data: { confirm: 'Are you sure?' }, class:'far fa-trash-alt' %>
-              <% end %>
-              </div>
-            </div>
+<script type="text/babel">
+
+var getRooms = new Promise((resolve,fail)=>{
+  $.ajax({
+          url: '/rooms.json',
+          beforeSend: (xhr) => { xhr.setRequestHeader ( 'X-CSRF-Token', $('meta[name="csrf-token"]').attr('content') )}
+        })
+          .done( (res) => { resolve(res) }).fail( (e) => { fail(e) 
+  })
+})
+
+window.onload = getRooms.then ( (res) => {
+
+  var Tools = React.createClass({
+    render: function () {
+      return (
+        <div className="tools">{this.props.room}
+          <a><i className="fas fa-pencil-alt"></i></a>
+        </div>
+      )
+    } 
+  })
+
+  var rooms = res.map ( (result,i) => {
+    return <div key={i} >
+      <div className="room_unit" key={i}>
+        <div className="room_outer_bar" key={i}>
+          <div className="room_inner_bar" key={i}>
+            <% if user_signed_in? && current_user.is_moderator %>
+            <Tools room={result.id}/>
+            <% end %>
+            <div key={i}> {result.name} </div>
           </div>
         </div>
-      <% end %>
+      </div>
     </div>
- <script>
- // Inline editing of room name
- 
+  })
+
+  var Room_list = React.createClass ({
+    render: function () {
+        return (
+          <div className="room_list">{rooms}</div>
+        );
+      }
+  });
+
+  ReactDOM.render(
+    <div><Room_list/></div>, document.querySelector(".back_plate")
+  );   
+  
+})
+
+ /*
 $('.fa-pencil-alt').click(function(e){
   console.log('clicked')
   var roomName = e.target.closest('.room_inner_bar').firstChild
@@ -39,5 +72,5 @@ $('.fa-pencil-alt').click(function(e){
       roomName.blur();
     }
   })    
-});
+});*/
   </script>
