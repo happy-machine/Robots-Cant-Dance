@@ -4,8 +4,6 @@ class RoomsController < ApplicationController
   # GET /rooms
   # GET /rooms.json
   def index
-    puts "current"
-    p current_user
     @rooms = Room.all.order(:id)
   end
 
