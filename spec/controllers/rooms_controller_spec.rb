@@ -111,13 +111,13 @@ RSpec.describe RoomsController, type: :controller do
         room = Room.create! valid_attributes
         put :update, params: {id: room.to_param, room: new_attributes}, session: valid_session
         room.reload
-        expect(room.name).to eq "chats"
+        expect(room.name).to eq "test_room"
       end
 
       it "redirects to the room" do
         room = Room.create! valid_attributes
         put :update, params: {id: room.to_param, room: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(room)
+        expect(response).to be_success
       end
     end
 
