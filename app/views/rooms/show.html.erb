@@ -11,7 +11,7 @@
 
       <div id="message_area">
           <% @messages.each do |message| %>
-            <% if message.user_id == current_user.id %>
+            <% if user_signed_in? && message.user_id == current_user.id %>
               <%= render(partial: 'rooms/my-message', locals: { m: message }) %>
               <% else %>
               <%= render(partial: 'rooms/their-message', locals: { m: message }) %>

@@ -18,7 +18,7 @@ RSpec.describe MessagesController, type: :controller do
   }
 
   let(:invalid_attributes) {
-    {content: "", user:"", room:"", test:""}
+    {content: "", user:"", room:""}
   }
 
   
@@ -47,7 +47,7 @@ RSpec.describe MessagesController, type: :controller do
         expect(flash[:alert]).to be_present
       end
     end
-      it { should permit(:room_id).for(:create, params: 1) } 
+      it { should permit(:room_id, :id).for(room_messages_path,params: {room_id: 1}) }
       
   end
 
