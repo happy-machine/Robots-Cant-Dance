@@ -1,24 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Robots Can't Dance
+![Screnshot](https://i.imgur.com/kRcZDO3.png)
 
-Things you may want to cover:
+Robots Can't Dance is a websocket powered chat app where moderators can remove and edit rooms, and users can message each other in real time.
 
-* Ruby version
+## Action Cable
 
-* System dependencies
+Action Cable (Websockets) is used to send messages between the JS front end and Rails backend, this allows for almost continuous and immediate updating every 250ms.
 
-* Configuration
+ - Rails 5 
+ - Javascript selector manipulated dynamically generated elements
+ - PostgreSQL
+ - R Spec
+ - Capybara
+ - Cucumber
+ -  Travis CI
 
-* Database creation
+You can visit a deployed version on Heroku [here](https://banta-demo.herokuapp.com/)
 
-* Database initialization
+![Screenshot](https://i.imgur.com/DlWPBEG.jpg)
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
-
-* ...
