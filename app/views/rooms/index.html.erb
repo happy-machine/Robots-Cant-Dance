@@ -18,26 +18,25 @@
  <script>
  // Inline editing of room name
  
-$('.fa-pencil-alt').click(function(e){
-  console.log('clicked')
-  var roomName = e.target.closest('.room_inner_bar').firstChild
-  var roomId = roomName.href.split('/')[4]
-  roomName.setAttribute('contenteditable',true)
-  roomName.focus();
-  roomName.style.fontWeight=600
-  document.addEventListener('keypress', (event) => {
-    if(event.keyCode == 13 && roomId){
+$( '.fa-pencil-alt' ).click( function ( e ) {
+  var roomName = e.target.closest ( '.room_inner_bar' ).firstChild
+  var roomId = roomName.href.split ( '/' ) [4]
+  roomName.setAttribute ( 'contenteditable',true )
+  roomName.focus()
+  roomName.style.fontWeight = 600
+  document.addEventListener( 'keypress' , ( event ) => {
+    if( event.keyCode == 13 && roomId ){
       $.ajax({
               url: '/rooms/'+roomId,
               type: 'PUT',
               data: {name: roomName.text},
-              beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
+              beforeSend: function ( xhr ) { xhr.setRequestHeader ( 'X-CSRF-Token', $( 'meta[name="csrf-token"]' ).attr( 'content' ))}
           })
       event.preventDefault();
-      roomName.style.fontWeight=400
-      roomName.setAttribute('contenteditable',false)
+      roomName.style.fontWeight = 400
+      roomName.setAttribute( 'contenteditable' , false )
       roomName.blur();
     }
   })    
 });
-  </script>
+</script>
