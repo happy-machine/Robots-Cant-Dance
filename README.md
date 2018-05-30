@@ -1,7 +1,7 @@
 # README
 
 # Robots Can't Dance
-![Screnshot](https://i.imgur.com/kRcZDO3.png)
+![Screnshot](https://i.imgur.com/prxId9m.png)
 
 Robots Can't Dance is a websocket powered chat app where moderators can remove and edit rooms, and users can message each other in real time.
 
